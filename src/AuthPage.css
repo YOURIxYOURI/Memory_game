@@ -40,6 +40,9 @@ body{
     border-color: var(--button-hover-color); /*!!!!!!!*/
   }
   
+  .form-input{
+    background-color: var(--unflipped-card-color);
+  }
 
   .form-button {
     background-color: var(--button-color);

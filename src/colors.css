@@ -12,13 +12,13 @@
   }
   @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #fcfcfc;
-        --flipped-card-color: #c2c2c2;
+        --background-color: #e0dede;
+        --flipped-card-color: #a5a5a5;
         --unflipped-card-color: #c4c4c4;
         --text-color: #212529;
         --link-color: #4caf50;
         --link-hover-color: #45a049;
-        --button-color: #099705;
-        --button-hover-color: #0ba806;
+        --button-color: #098a04;
+        --button-hover-color: #0db407;
     }
   }
