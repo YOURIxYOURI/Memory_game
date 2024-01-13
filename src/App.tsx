@@ -1,11 +1,13 @@
-
+// Importowanie potrzebnych modułów z biblioteki React
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './App.css'; // Importowanie pliku stylów CSS
 
+// Tablica z emoji reprezentującymi karty
 const images: string[] = [
   '💻', '🖱️', '🕹️', '🎮', '👾', '🎧', '🖥️', '⌨️',
 ];
 
+// Funkcja do tasowania tablicy
 const shuffleArray = (array: string[]): string[] => {
   const shuffledArray = [...array];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -15,18 +17,22 @@ const shuffleArray = (array: string[]): string[] => {
   return shuffledArray;
 };
 
+// Główny komponent aplikacji
 const App: React.FC = () => {
+  // Stany dla karty, indeksów odkrytych kart, odnalezionych par, punktacji i liczby ruchów
   const [cards, setCards] = useState<string[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
   const [score, setScore] = useState<number>(0)
   const [moves, setMoves] = useState<number>(0);
 
+  // Efekt, który tasuje karty przy pierwszym uruchomieniu
   useEffect(() => {
     const initialCards = shuffleArray([...images, ...images]);
     setCards(initialCards);
   }, []);
 
+  // Efekt, który sprawdza, czy dwie odkryte karty tworzą parę
   useEffect(() => {
     if (flippedIndices.length === 2) {
       const [firstIndex, secondIndex] = flippedIndices;
@@ -38,6 +44,7 @@ const App: React.FC = () => {
     }
   }, [flippedIndices, cards, matchedPairs]);
 
+  // Obsługa kliknięcia na kartę
   const handleCardClick = (index: number) => {
     if (flippedIndices.length < 2 && !flippedIndices.includes(index) && !matchedPairs.includes(index)) {
       setFlippedIndices([...flippedIndices, index]);
@@ -45,6 +52,7 @@ const App: React.FC = () => {
     }
   };
 
+  // Renderowanie komponentu
   return (
     <div className="App">
       <h1>Memory Game</h1>
@@ -67,4 +75,5 @@ const App: React.FC = () => {
   );
 };
 
+// Eksportowanie komponentu do użycia w innych plikach
 export default App;
