@@ -3,6 +3,12 @@
 
 body{
   background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ustawienie wysokości na 100% wysokości widoku */
+  margin: 0;
+  text-align: center;
 }
 .App{
   text-align: center;
