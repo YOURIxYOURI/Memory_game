@@ -1,0 +1,20 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #2b2b2b;
+      --flipped-card-color: #525151;
+      --unflipped-card-color: #444;
+      --text-color: #fff;
+      --link-color: #90caf9;
+      --link-hover-color: #64b5f6;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #fcfcfc;
+        --flipped-card-color: #c2c2c2;
+        --unflipped-card-color: #c4c4c4;
+        --text-color: #212529;
+        --link-color: #007bff;
+        --link-hover-color: #0056b3;
+    }
+  }
