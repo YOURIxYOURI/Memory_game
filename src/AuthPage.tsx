@@ -57,6 +57,7 @@ const AuthPage: React.FC = () => {
             <label>
               Username:
               <input
+              className='form-input'
                 type="text"
                 value={registerData.username}
                 onChange={(e) => setRegisterData({ ...registerData, username: e.target.value })}
@@ -65,6 +66,7 @@ const AuthPage: React.FC = () => {
             <label>
               Password:
               <input
+              className='form-input'
                 type="password"
                 value={registerData.password}
                 onChange={(e) => setRegisterData({ ...registerData, password: e.target.value })}
@@ -73,6 +75,7 @@ const AuthPage: React.FC = () => {
             <label>
               Confirm Password:
               <input
+              className='form-input'
                 type="password"
                 value={registerData.confirmPassword}
                 onChange={(e) => setRegisterData({ ...registerData, confirmPassword: e.target.value })}
