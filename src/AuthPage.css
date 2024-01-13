@@ -1,0 +1,56 @@
+@import './colors.css';
+
+body{
+    background-color: var(--background-color);
+}
+
+.AuthPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .auth-container {
+    display: flex;
+  }
+  
+  .auth-form {
+    border: 1px solid var(--unflipped-card-color);
+    padding: 20px;
+    padding-right: 40px;
+    margin: 10px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .form-input:hover, .form-input:focus{
+    border-color: var(--button-hover-color); /*!!!!!!!*/
+  }
+  
+
+  .form-button {
+    background-color: var(--button-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background-color: var(--button-hover-color);
+  }
+  

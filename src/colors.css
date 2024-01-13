@@ -6,6 +6,8 @@
       --text-color: #fff;
       --link-color: #90caf9;
       --link-hover-color: #64b5f6;
+      --button-color: #01579e;
+      --button-hover-color: #0878e7;
     }
   }
   @media (prefers-color-scheme: light) {
@@ -14,7 +16,9 @@
         --flipped-card-color: #c2c2c2;
         --unflipped-card-color: #c4c4c4;
         --text-color: #212529;
-        --link-color: #007bff;
-        --link-hover-color: #0056b3;
+        --link-color: #4caf50;
+        --link-hover-color: #45a049;
+        --button-color: #099705;
+        --button-hover-color: #0ba806;
     }
   }
