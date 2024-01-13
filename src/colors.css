@@ -12,7 +12,7 @@
   }
   @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #e0dede;
+        --background-color: #ebe8e8;
         --flipped-card-color: #a5a5a5;
         --unflipped-card-color: #c4c4c4;
         --text-color: #212529;

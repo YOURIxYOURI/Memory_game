@@ -25,6 +25,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className="AuthPage">
+       <h1>Memory Game</h1>
       <div className="auth-container">
         <div className="auth-form login-form">
           <h2>Login</h2>
