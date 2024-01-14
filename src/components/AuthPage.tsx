@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate } from 'react-router-dom';
-import './AuthPage.css'; 
+import '../styles/AuthPage.css'; 
 
 const AuthPage: React.FC = () => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });

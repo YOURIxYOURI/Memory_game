@@ -1,6 +1,6 @@
 // Importowanie potrzebnych modułów z biblioteki React
 import React, { useState, useEffect } from 'react';
-import './Game.css'; // Importowanie pliku stylów CSS
+import '../styles/Game.css'; // Importowanie pliku stylów CSS
 
 // Tablica z emoji reprezentującymi karty
 const images: string[] = [
@@ -37,7 +37,7 @@ const Game: React.FC = () => {
     if (flippedIndices.length === 2) {
       const [firstIndex, secondIndex] = flippedIndices;
       if (cards[firstIndex] === cards[secondIndex]) {
-        setMatchedPairs([...flippedIndices])
+        setMatchedPairs([...matchedPairs, ...flippedIndices])
         setScore(score + (100-moves))
       }
       setTimeout(() => setFlippedIndices([]), 1000);
