@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthPage from './AuthPage';
-import Game from './Game';
+import AuthPage from './components/AuthPage';
+import Game from './components/Game';
 
 const App: React.FC = () => {
   return (

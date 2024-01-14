@@ -23,7 +23,7 @@ const Game: React.FC = () => {
   const [cards, setCards] = useState<string[]>([]);
   const [flippedIndices, setFlippedIndices] = useState<number[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
-  const [score, setScore] = useState<number>(0)
+  const [score, setScore] = useState<number>(0);
   const [moves, setMoves] = useState<number>(0);
 
   // useEffect, który tasuje karty przy pierwszym uruchomieniu
@@ -38,11 +38,11 @@ const Game: React.FC = () => {
       const [firstIndex, secondIndex] = flippedIndices;
       if (cards[firstIndex] === cards[secondIndex]) {
         setMatchedPairs([...flippedIndices])
-        setScore(score + (100 - moves))
+        setScore(score + (100-moves))
       }
       setTimeout(() => setFlippedIndices([]), 1000);
     }
-  }, [flippedIndices, cards, matchedPairs]);
+  }, [flippedIndices, cards]);
 
   // Obsługa kliknięcia na kartę
   const handleCardClick = (index: number) => {
