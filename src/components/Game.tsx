@@ -1,16 +1,15 @@
 // Importowanie potrzebnych modułów z biblioteki React
 import React, { useState, useEffect } from 'react';
 import '../styles/Game.css'; // Importowanie pliku stylów CSS
-import {useNavigate } from 'react-router-dom';
-import EndPopUp from './EndPopup';
+import { useNavigate } from 'react-router-dom'; // Importowanie hooka do nawigacji
+import EndPopUp from './EndPopup'; // Importowanie komponentu pop-upu na koniec gry
 
 // Tablica z emoji reprezentującymi karty
 const images: string[] = [
   '💻', '🖱️', '🕹️', '🎮', '👾', '🎧', '🖥️', '⌨️',
 ];
 
-
-// Funkcja do tasowania tablicy 
+// Funkcja do tasowania tablicy
 const shuffleArray = (array: string[]): string[] => {
   const shuffledArray = [...array];
   for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -28,8 +27,8 @@ const Game: React.FC = () => {
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
   const [score, setScore] = useState<number>(0);
   const [moves, setMoves] = useState<number>(0);
-  const [gameFinished, setGameFinished] = useState(false)
-  const navigate  = useNavigate();
+  const [gameFinished, setGameFinished] = useState(false); // Stan informujący, czy gra się zakończyła
+  const navigate = useNavigate(); // Hook do nawigacji
 
   // useEffect, który tasuje karty przy pierwszym uruchomieniu
   useEffect(() => {
@@ -43,28 +42,29 @@ const Game: React.FC = () => {
       const [firstIndex, secondIndex] = flippedIndices;
       if (cards[firstIndex] === cards[secondIndex]) {
         setMatchedPairs([...matchedPairs, ...flippedIndices])
-        console.log(matchedPairs)
-        setScore(score + (100-moves))
-        if(matchedPairs.length === 14){
-          setGameFinished(true)
+        setScore(score + (100 - moves))
+        if (matchedPairs.length === 14) { // Sprawdzenie, czy wszystkie pary zostały odnalezione
+          setGameFinished(true); // Ustawienie stanu informującego, że gra się zakończyła
         }
       }
-      setTimeout(() => setFlippedIndices([]), 1000);
+      setTimeout(() => setFlippedIndices([]), 1000); // Zresetowanie odkrytych kart po 1 sekundzie
     }
-  }, [flippedIndices, cards]);
+  }, [flippedIndices, cards, matchedPairs, moves, score]);
 
+  // useEffect, który zapisuje wynik do localStorage po zakończeniu gry
   useEffect(() => {
-    if(gameFinished){
-      var scoreBoard = JSON.parse(localStorage.getItem("scoreboard") || "[]");
-        const scoreData = {
-          username: localStorage.getItem('loggedUser'),
-          moves: moves,
-          score: score
-        }
-        scoreBoard.push(scoreData)
-        localStorage.setItem('scoreboard', JSON.stringify(scoreBoard))
+    if (gameFinished) {
+      const scoreBoard = JSON.parse(localStorage.getItem("scoreboard") || "[]");
+      const scoreData = {
+        username: localStorage.getItem('loggedUser'),
+        moves: moves,
+        score: score
+      }
+      scoreBoard.push(scoreData);
+      localStorage.setItem('scoreboard', JSON.stringify(scoreBoard));
     }
-  }, [gameFinished])
+  }, [gameFinished, moves, score]);
+
   // Obsługa kliknięcia na kartę
   const handleCardClick = (index: number) => {
     if (flippedIndices.length < 2 && !flippedIndices.includes(index) && !matchedPairs.includes(index)) {
@@ -73,12 +73,15 @@ const Game: React.FC = () => {
     }
   };
 
+  // Obsługa kliknięcia przycisku wylogowania
   const handleLogout = () => {
-    localStorage.removeItem('loggedUser');
-    navigate('/')
+    localStorage.removeItem('loggedUser'); // Usunięcie danych użytkownika z localStorage
+    navigate('/'); // Przekierowanie do strony logowania
   };
+
+  // Obsługa kliknięcia przycisku scoreboard
   const handleScoreboardClick = () => {
-    navigate('/scoreboard')
+    navigate('/scoreboard'); // Przekierowanie do tablicy wyników
   };
 
   // Renderowanie komponentu

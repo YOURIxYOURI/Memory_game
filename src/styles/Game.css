@@ -1,73 +1,86 @@
-
+/* Importowanie kolorów z pliku colors.css */
 @import './colors.css';
 
-body{
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
-  margin: 0;
-  text-align: center;
-}
-.App{
-  text-align: center;
-  margin: 0 auto; 
-  width: 100%;
+/* Stylowanie głównego kontenera body */
+body {
+  background-color: var(--background-color); /* Kolor tła */
+  display: flex; /* Ustawienie rodzaju kontenera na flexbox */
+  justify-content: center; /* Wyśrodkowanie zawartości względem osi poziomej */
+  align-items: center; /* Wyśrodkowanie zawartości względem osi pionowej */
+  height: 100vh; /* Wysokość równa 100% widoku */
+  margin: 0; /* Usunięcie marginesu */
+  text-align: center; /* Wyśrodkowanie tekstu */
 }
 
+/* Stylowanie głównego kontenera aplikacji */
+.App {
+  text-align: center; /* Wyśrodkowanie tekstu */
+  margin: 0 auto; /* Automatyczne wyśrodkowanie poziome */
+  width: 100%; /* Szerokość równa 100% */
+}
+
+/* Stylowanie nagłówka */
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Margines na dole nagłówka */
 }
 
+/* Stylowanie planszy gry */
 .game-board {
-  display: grid;
-  grid-template-columns: repeat(4, 100px);
-  gap: 10px;
+  display: grid; /* Ustawienie rodzaju kontenera na siatkę */
+  grid-template-columns: repeat(4, 100px); /* Ustawienie kolumn siatki */
+  gap: 10px; /* Odstęp między elementami */
 }
 
+/* Stylowanie karty */
 .card {
-  width: 100px;
-  height: 100px;
-  background-color: var(--unflipped-card-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--text-color);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 100px; /* Szerokość karty */
+  height: 100px; /* Wysokość karty */
+  background-color: var(--unflipped-card-color); /* Kolor tła karty */
+  display: flex; /* Ustawienie rodzaju kontenera na flexbox */
+  align-items: center; /* Wyśrodkowanie zawartości względem osi pionowej */
+  justify-content: center; /* Wyśrodkowanie zawartości względem osi poziomej */
+  font-size: var(--text-color); /* Rozmiar czcionki */
+  cursor: pointer; /* Zmiana kształtu kursora na wskaźnik */
+  transition: background-color 0.3s ease; /* Efekt przejścia przy najechaniu */
 }
 
+/* Stylowanie odwróconej karty */
 .card.flipped {
-  background-color: var(--flipped-card-color);
+  background-color: var(--flipped-card-color); /* Kolor tła odwróconej karty */
 }
 
+/* Stylowanie karty podczas najechania */
 .card:hover {
-  background-color: var(--link-hover-color);
+  background-color: var(--link-hover-color); /* Zmiana koloru tła karty */
 }
 
+/* Stylowanie informacji o grze */
 .game-info {
-  margin-top: 20px;
+  margin-top: 20px; /* Margines na górze informacji o grze */
 }
 
+/* Stylowanie przycisków nawigacyjnych */
 .navigation-buttons {
-  margin-top: 20px;
+  margin-top: 20px; /* Margines na górze przycisków nawigacyjnych */
 }
 
+/* Stylowanie przycisków */
 .navigation-buttons button {
-  margin-right: 10px;
-  background-color: var(--button-color);
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-right: 10px; /* Margines na prawej stronie przycisków */
+  background-color: var(--button-color); /* Kolor tła przycisków */
+  color: white; /* Kolor tekstu */
+  padding: 10px; /* Wielkość wypełnienia */
+  border: none; /* Brak obramowania */
+  cursor: pointer; /* Zmiana kształtu kursora na wskaźnik */
+  transition: background-color 0.3s ease; /* Efekt przejścia przy najechaniu */
 }
 
-.navigation-buttons button:hover{
-  background-color: var(--button-hover-color);
+/* Stylowanie przycisków podczas najechania */
+.navigation-buttons button:hover {
+  background-color: var(--button-hover-color); /* Zmiana koloru tła przycisków */
 }
 
+/* Stylowanie ostatniego przycisku w nawigacji */
 .navigation-buttons button:last-child {
-  margin-right: 0;
+  margin-right: 0; /* Usunięcie marginesu z prawej strony */
 }

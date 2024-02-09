@@ -1,36 +1,41 @@
-@import './colors.css';
+@import './colors.css'; /* Importowanie kolorów z pliku colors.css */
 
-body{
-  background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; 
-  margin: 0;
-  text-align: center;
+/* Stylowanie głównego kontenera body */
+body {
+  background-color: var(--background-color); /* Kolor tła */
+  display: flex; /* Ustawienie rodzaju kontenera na flexbox */
+  justify-content: center; /* Wyśrodkowanie zawartości względem osi poziomej */
+  align-items: center; /* Wyśrodkowanie zawartości względem osi pionowej */
+  height: 100vh; /* Wysokość równa 100% widoku */
+  margin: 0; /* Usunięcie marginesu */
+  text-align: center; /* Wyśrodkowanie tekstu */
 }
 
+/* Stylowanie tabeli */
 table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 80vw;
+  font-family: Arial, Helvetica, sans-serif; /* Wybór rodziny czcionek */
+  border-collapse: collapse; /* Łączenie granic komórek */
+  width: 80vw; /* Szerokość równa 80% szerokości widoku */
 }
 
+/* Stylowanie komórek danych i nagłówków tabeli */
 table td, table th {
-  padding: 8px;
+  padding: 8px; /* Wielkość wypełnienia komórek */
 }
 
+/* Stylowanie wierszy tabeli */
 table tr:nth-child(even) {
-  background-color: var(--unflipped-card-color);
+  background-color: var(--unflipped-card-color); /* Kolor tła dla parzystych wierszy */
 }
 table tr:nth-child(odd) {
-  background-color: var(--background-table-color);
+  background-color: var(--background-table-color); /* Kolor tła dla nieparzystych wierszy */
 }
 
+/* Stylowanie nagłówków tabeli */
 table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: var(--button-color);
-  color: white;
+  padding-top: 12px; /* Wielkość wypełnienia górnej krawędzi nagłówka */
+  padding-bottom: 12px; /* Wielkość wypełnienia dolnej krawędzi nagłówka */
+  text-align: center; /* Wyśrodkowanie tekstu */
+  background-color: var(--button-color); /* Kolor tła nagłówka */
+  color: white; /* Kolor tekstu */
 }
