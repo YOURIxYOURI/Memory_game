@@ -5,24 +5,40 @@ import '../styles/AuthPage.css';
 const AuthPage: React.FC = () => {
   const [loginData, setLoginData] = useState({ username: '', password: '' });
   const [registerData, setRegisterData] = useState({ username: '', password: '', confirmPassword: '' });
-  const [error, setError] = useState<string | null>(null);
+  const [errorReg, setErrorReg] = useState<string | null>(null);
+  const [errorLog, setErrorLog] = useState<string | null>(null);
   const navigate  = useNavigate();
+
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Obsługa logiki logowania 
-    navigate('/game');
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const parsedUserData = JSON.parse(userData)
+    if(parsedUserData.password == loginData.password && parsedUserData.username == loginData.username)
+    {
+      localStorage.setItem('loggedUser', loginData.username);
+      navigate('/game');
+    }else{
+      setErrorLog('Incorrect username or password')
+    }}else{
+      setErrorLog('User not found')
+    }
   };
 
   const handleRegisterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
-      setError('Passwords do not match');
+      setErrorReg('Passwords do not match');
       return;
+    }else{
+      const user = {
+        username: registerData.username,
+        password: registerData.password
+      }
+      localStorage.setItem('user', JSON.stringify(user));
+      setErrorReg('Succesfull register')
     }
-
-    // Obsługa logiki rejestracji 
-  };
-
+  }
   return (
     <div className="AuthPage">
        <h1>Memory Game</h1>
@@ -49,6 +65,7 @@ const AuthPage: React.FC = () => {
               />
             </label>
             <button className='form-button' type="submit">Login</button>
+            {errorLog && <p className="error-message">{errorLog}</p>}
           </form>
         </div>
 
@@ -83,7 +100,7 @@ const AuthPage: React.FC = () => {
               />
             </label>
             <button className='form-button' type="submit">Register</button>
-            {error && <p className="error-message">{error}</p>}
+            {errorReg && <p className="error-message">{errorReg}</p>}
           </form>
         </div>
       </div>

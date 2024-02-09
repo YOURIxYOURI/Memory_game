@@ -1,11 +1,13 @@
 // Importowanie potrzebnych modułów z biblioteki React
 import React, { useState, useEffect } from 'react';
 import '../styles/Game.css'; // Importowanie pliku stylów CSS
+import {useNavigate } from 'react-router-dom';
 
 // Tablica z emoji reprezentującymi karty
 const images: string[] = [
   '💻', '🖱️', '🕹️', '🎮', '👾', '🎧', '🖥️', '⌨️',
 ];
+
 
 // Funkcja do tasowania tablicy 
 const shuffleArray = (array: string[]): string[] => {
@@ -25,6 +27,8 @@ const Game: React.FC = () => {
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
   const [score, setScore] = useState<number>(0);
   const [moves, setMoves] = useState<number>(0);
+  const [gameFinished, setGameFinished] = useState(false)
+  const navigate  = useNavigate();
 
   // useEffect, który tasuje karty przy pierwszym uruchomieniu
   useEffect(() => {
@@ -38,18 +42,42 @@ const Game: React.FC = () => {
       const [firstIndex, secondIndex] = flippedIndices;
       if (cards[firstIndex] === cards[secondIndex]) {
         setMatchedPairs([...matchedPairs, ...flippedIndices])
+        console.log(matchedPairs)
         setScore(score + (100-moves))
+        if(matchedPairs.length === 14){
+          setGameFinished(true)
+        }
       }
       setTimeout(() => setFlippedIndices([]), 1000);
     }
   }, [flippedIndices, cards]);
 
+  useEffect(() => {
+    if(gameFinished){
+      var scoreBoard = JSON.parse(localStorage.getItem("scoreboard") || "[]");
+        const scoreData = {
+          username: localStorage.getItem('loggedUser'),
+          moves: moves,
+          score: score
+        }
+        scoreBoard.push(scoreData)
+        localStorage.setItem('scoreboard', JSON.stringify(scoreBoard))
+    }
+  }, [gameFinished])
   // Obsługa kliknięcia na kartę
   const handleCardClick = (index: number) => {
     if (flippedIndices.length < 2 && !flippedIndices.includes(index) && !matchedPairs.includes(index)) {
       setFlippedIndices([...flippedIndices, index]);
       setMoves(moves + 1);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('loggedUser');
+    navigate('/')
+  };
+  const handleScoreboardClick = () => {
+    navigate('/scoreboard')
   };
 
   // Renderowanie komponentu
@@ -70,6 +98,10 @@ const Game: React.FC = () => {
       <div className="game-info">
         <h2>Moves: {moves}</h2>
         <h2>Score: {score}</h2>
+      </div>
+      <div className="navigation-buttons">
+        <button onClick={handleScoreboardClick}>Scoreboard</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

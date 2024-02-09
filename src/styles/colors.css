@@ -1,6 +1,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
       --background-color: #2b2b2b;
+      --background-table-color: #313131;
       --flipped-card-color: #525151;
       --unflipped-card-color: #444;
       --text-color: #fff;
@@ -13,12 +14,13 @@
   @media (prefers-color-scheme: light) {
     :root {
         --background-color: #ebe8e8;
+        --background-table-color: #d4d4d4;
         --flipped-card-color: #a5a5a5;
         --unflipped-card-color: #c4c4c4;
         --text-color: #212529;
         --link-color: #4caf50;
         --link-hover-color: #45a049;
-        --button-color: #098a04;
-        --button-hover-color: #0db407;
+        --button-color: #0baa05;
+        --button-hover-color: #0dbd07;
     }
   }

@@ -49,3 +49,25 @@ h1 {
 .game-info {
   margin-top: 20px;
 }
+
+.navigation-buttons {
+  margin-top: 20px;
+}
+
+.navigation-buttons button {
+  margin-right: 10px;
+  background-color: var(--button-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover{
+  background-color: var(--button-hover-color);
+}
+
+.navigation-buttons button:last-child {
+  margin-right: 0;
+}
