@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Game.css'; // Importowanie pliku stylów CSS
 import {useNavigate } from 'react-router-dom';
+import EndPopUp from './EndPopup';
 
 // Tablica z emoji reprezentującymi karty
 const images: string[] = [
@@ -103,6 +104,7 @@ const Game: React.FC = () => {
         <button onClick={handleScoreboardClick}>Scoreboard</button>
         <button onClick={handleLogout}>Logout</button>
       </div>
+      {gameFinished && (<EndPopUp/>)}
     </div>
   );
 };
