@@ -36,7 +36,7 @@ const AuthPage: React.FC = () => {
     } else {
       const user = {
         username: registerData.username,
-        password: registerData.password
+        password: registerData.password 
       };
       localStorage.setItem('user', JSON.stringify(user)); // Zapisanie danych użytkownika w localStorage po poprawnej rejestracji
       setErrorReg('Successful register'); // Ustawienie komunikatu o poprawnej rejestracji
