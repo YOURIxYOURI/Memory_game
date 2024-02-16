@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/ScoreBoard.css'; // Importowanie pliku stylów CSS
+import { useNavigate } from 'react-router-dom'; // Importowanie hooka do nawigacji
 
 // Dane testowe dla tablicy wyników
 const fakeData = [
@@ -9,8 +10,14 @@ const fakeData = [
 ];
 
 const ScoreBoard: React.FC = () => {
+const navigate = useNavigate()
+  useEffect(()=>{
+    if(!localStorage.getItem('loggedUser')){
+      navigate('/')
+    }
+  }, []) 
   // Pobranie danych tablicy wyników z localStorage
-  var scoreboardData = JSON.parse(localStorage.getItem("scoreboard") || "[]");
+  let scoreboardData = JSON.parse(localStorage.getItem("scoreboard")!);
 
   // Połączenie danych testowych z danymi z localStorage
   scoreboardData = [...scoreboardData, ...fakeData];

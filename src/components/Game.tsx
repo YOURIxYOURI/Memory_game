@@ -32,6 +32,9 @@ const Game: React.FC = () => {
 
   // useEffect, który tasuje karty przy pierwszym uruchomieniu
   useEffect(() => {
+    if(!localStorage.getItem('loggedUser')){
+      navigate('/')
+    }
     const initialCards = shuffleArray([...images, ...images]);
     setCards(initialCards);
   }, []);
@@ -49,7 +52,7 @@ const Game: React.FC = () => {
       }
       setTimeout(() => setFlippedIndices([]), 1000); // Zresetowanie odkrytych kart po 1 sekundzie
     }
-  }, [flippedIndices, cards, matchedPairs, moves, score]);
+  }, [flippedIndices, cards]);
 
   // useEffect, który zapisuje wynik do localStorage po zakończeniu gry
   useEffect(() => {
@@ -63,7 +66,7 @@ const Game: React.FC = () => {
       scoreBoard.push(scoreData);
       localStorage.setItem('scoreboard', JSON.stringify(scoreBoard));
     }
-  }, [gameFinished, moves, score]);
+  }, [gameFinished]);
 
   // Obsługa kliknięcia na kartę
   const handleCardClick = (index: number) => {
