@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MemoryGame_API.props" />
+</Project>
