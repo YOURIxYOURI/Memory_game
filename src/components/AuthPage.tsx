@@ -10,37 +10,67 @@ const AuthPage: React.FC = () => {
   const [errorLog, setErrorLog] = useState<string | null>(null); // Błąd logowania
   const navigate = useNavigate(); // Hook do nawigacji
 
-  // Obsługa logowania
+
   const handleLoginSubmit = (e: React.FormEvent) => {
+
     e.preventDefault();
+
     const userData = localStorage.getItem('user');
+
     if (userData) {
+
       const parsedUserData = JSON.parse(userData);
+
       if (parsedUserData.password === loginData.password && parsedUserData.username === loginData.username) {
+
         localStorage.setItem('loggedUser', loginData.username); // Zapisanie zalogowanego użytkownika w localStorage
+
         navigate('/game'); // Przekierowanie do strony gry po poprawnym zalogowaniu
+
       } else {
+
         setErrorLog('Incorrect username or password'); // Ustawienie błędnego komunikatu w przypadku niepoprawnych danych logowania
+
       }
+
     } else {
+
       setErrorLog('User not found'); // Ustawienie błędnego komunikatu w przypadku braku użytkownika
+
     }
+
   };
 
+
+
   // Obsługa rejestracji
+
   const handleRegisterSubmit = (e: React.FormEvent) => {
+
     e.preventDefault();
+
     if (registerData.password !== registerData.confirmPassword) { // Sprawdzenie, czy hasła zgadzają się
+
       setErrorReg('Passwords do not match'); // Ustawienie błędu w przypadku niezgodności haseł
+
       return;
+
     } else {
+
       const user = {
+
         username: registerData.username,
+
         password: registerData.password 
+
       };
+
       localStorage.setItem('user', JSON.stringify(user)); // Zapisanie danych użytkownika w localStorage po poprawnej rejestracji
+
       setErrorReg('Successful register'); // Ustawienie komunikatu o poprawnej rejestracji
+
     }
+
   };
 
   // Renderowanie komponentu
